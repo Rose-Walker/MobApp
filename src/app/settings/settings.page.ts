@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonRadio, IonRadioGroup  } from '@ionic/angular/standalone';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { StorageService } from 'src/storage.service';
 
 @Component({
