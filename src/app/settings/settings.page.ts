@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonRadio, IonRadioGroup  } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { StorageService } from 'src/storage.service';
 
 @Component({
   selector: 'app-settings',
@@ -9,18 +10,18 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 })
 export class SettingsPage {
 
-    selectedUnit: string = 'metric'; // Default value
+  selectedUnit: string = 'metric'; // Default value
 
-  constructor() {
+  constructor(private storageService: StorageService) {
   }
 
   async ngOnInit() {
-    var savedUnit = localStorage.getItem("selectedUnit");
+    var savedUnit = await this.storageService.get("selectedUnit");
     if(savedUnit)
         this.selectedUnit = savedUnit;
   }
 
   async onRadioSelectedChanged(){
-    localStorage.setItem("selectedUnit", this.selectedUnit)
+    await this.storageService.set("selectedUnit", this.selectedUnit)
   }
 }
