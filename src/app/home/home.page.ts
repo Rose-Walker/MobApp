@@ -19,7 +19,6 @@ export class HomePage {
   }
 
   onSearch(){
-    console.log("Search value is", this.searchString);
     this.router.navigateByUrl('/countries?search=' + this.searchString);
   }
 }
