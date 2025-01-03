@@ -11,7 +11,7 @@
       </ion-toolbar>    
     </ion-header>
   
-    <ion-radio-group [allowEmptySelection]="true" [(ngModel)]="selectedUnit" (ionChange)="onRadioSelectedChanged()">
+    <ion-radio-group [allowEmptySelection]="false" [(ngModel)]="selectedUnit" (ionChange)="onRadioSelectedChanged()">
         <ion-radio value="metric">Metric</ion-radio><br />
         <ion-radio value="standard">Standard</ion-radio><br />
         <ion-radio value="imperial">Imperial</ion-radio><br />
