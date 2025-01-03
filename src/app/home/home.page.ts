@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCol, IonGrid, IonRow, IonInput  } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, logoApple, settingsSharp, star } from 'ionicons/icons';
-import { CountriesHttpService } from 'src/countries.httpservice';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,18 +14,12 @@ import { FormsModule } from '@angular/forms';
 export class HomePage {
   searchString: string = '';
 
-  constructor(private httpService: CountriesHttpService) {
+  constructor(private router: Router) {
     addIcons({ heart, logoApple, settingsSharp, star });
-    //https://restcountries.com/v3.1/name/ire
-  }
-
-  async ngOnInit(){
-    const options = {url: "https://restcountries.com/v3.1/name/ireland"}
-    var test = await this.httpService.get(options);
-    console.log("api returned", test);
   }
 
   onSearch(){
     console.log("Search value is", this.searchString);
+    this.router.navigateByUrl('/countries?search=' + this.searchString);
   }
 }
