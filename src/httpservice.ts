@@ -4,7 +4,7 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from "@capacitor/core";
 @Injectable({
     providedIn: 'root'
 })
-export class CountriesHttpService{
+export class HttpService{
     constructor(){
     }
 

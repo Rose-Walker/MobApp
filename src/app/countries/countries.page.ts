@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem,  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonButton } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem,  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonButton } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
-import { CountriesHttpService } from 'src/countries.httpservice';
-import { ActivatedRoute } from '@angular/router';
+import { HttpService } from 'src/httpservice';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-countires',
   templateUrl: 'countries.page.html',
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, IonList, IonItem, NgFor,  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonButton],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, IonList, IonItem, NgFor, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonButton],
 })
 export class CountriesPage {
   foundCountries: any[] = [];
   showNoCountriesFound: boolean = false;
 
-  constructor(private httpService: CountriesHttpService, private route: ActivatedRoute) {
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {
   }
 
   async ngOnInit(){
@@ -36,7 +36,6 @@ export class CountriesPage {
   async getDataFromApi(url: string){
     const options = {url: url}
     const response = await this.httpService.get(options);
-    console.log("reponse", response);
 
     //If we did not find anything from the search
     if(response.status !== 404){
@@ -46,10 +45,11 @@ export class CountriesPage {
   }
 
   newsSelected(country: any){
-    console.log("News selected for country", country)
+    this.router.navigateByUrl('/news?cca2=' + country.cca2 + '&name=' + country.name.official);
   }
 
   weatherSelected(country: any){
-    console.log("Weather selected for country", country)
+    var latAndLon = country.capitalInfo.latlng;
+    this.router.navigateByUrl('/weather?lat=' + latAndLon[0] + '&lon=' + latAndLon[1] + '&capital=' + country.capital[0]);
   }
 }
