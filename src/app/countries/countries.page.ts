@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem,  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonButton } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { CountriesHttpService } from 'src/countries.httpservice';
 import { ActivatedRoute } from '@angular/router';
-import { NgStyle } from '@angular/common'; // Import Angular directives
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-countires',
   templateUrl: 'countries.page.html',
-  imports: [ NgStyle, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, IonList, IonItem, NgFor,  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonButton],
 })
 export class CountriesPage {
-  foundCountries: [] = [];
+  foundCountries: any[] = [];
   showNoCountriesFound: boolean = false;
 
   constructor(private httpService: CountriesHttpService, private route: ActivatedRoute) {
@@ -37,8 +37,9 @@ export class CountriesPage {
     const options = {url: url}
     const response = await this.httpService.get(options);
     console.log("reponse", response);
+
+    //If we did not find anything from the search
     if(response.status !== 404){
-      console.log("im here");
       this.foundCountries = response;
       this.showNoCountriesFound = true;
     }

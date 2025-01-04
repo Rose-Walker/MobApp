@@ -13,5 +13,27 @@
     <div [hidden]="showNoCountriesFound">
         <ion-title>Could not find any countries that matched your search</ion-title>
     </div>
+
+    <div [hidden]="!showNoCountriesFound">
+      <ion-list>
+        <ion-item *ngFor="let country of foundCountries">
+          <ion-card>
+            <img alt="Silhouette of mountains" src={{country.flags.svg}} />
+            <ion-card-header>
+              <ion-card-title>{{country.name.official}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <ion-button expand="block">
+                News
+              </ion-button>
+              <ion-button expand="block">
+                Weather
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
   
