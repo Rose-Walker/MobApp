@@ -45,4 +45,11 @@ export class CountriesPage {
     }
   }
 
+  newsSelected(country: any){
+    console.log("News selected for country", country)
+  }
+
+  weatherSelected(country: any){
+    console.log("Weather selected for country", country)
+  }
 }

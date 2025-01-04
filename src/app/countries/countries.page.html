@@ -18,16 +18,16 @@
       <ion-list>
         <ion-item *ngFor="let country of foundCountries">
           <ion-card>
-            <img alt="Silhouette of mountains" src={{country.flags.svg}} />
+            <img alt="Silhouette of mountains" src={{country.flags.png}} />
             <ion-card-header>
               <ion-card-title>{{country.name.official}}</ion-card-title>
             </ion-card-header>
           
             <ion-card-content>
-              <ion-button expand="block">
+              <ion-button expand="block" (click)="newsSelected(country)">
                 News
               </ion-button>
-              <ion-button expand="block">
+              <ion-button expand="block" (click)="weatherSelected(country)">
                 Weather
               </ion-button>
             </ion-card-content>
