@@ -1,4 +1,5 @@
 # News and Weather Website
+This is a News and Weather website created using Angular
 
 ## Setup Guide
 1. Download or clone the repository
