@@ -1,6 +1,9 @@
 # News and Weather Website
 This is a News and Weather website created using Angular
 
+# Requirements
+- npm, this project requires npm to be installed, if you require npm you can download it from the official website [found here](https://www.npmjs.com)
+
 ## Setup Guide
 1. Download or clone the repository
 2. Once downloaded run the following command in the root folder: `npm install`
